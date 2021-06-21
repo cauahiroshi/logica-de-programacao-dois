@@ -1,0 +1,154 @@
+<meta charset="UTF-8">
+
+<script>
+
+	function mostra(frase){
+
+		document.write(frase); 
+	}
+
+    function pulaLinha(){
+
+    	mostra("<br><br>")
+    }
+
+    function pulaLinhaCurta(){
+
+    	mostra("<br>")
+    }
+
+    function sorteia(){
+
+		return Math.round(Math.random() * 1000 );
+    }
+
+    function sorteiaNumeros(quantidade){ 
+
+    	var numerosAleatorios= [];
+
+    	var numero=1; 
+    	while(numero <= quantidade){
+
+			numerosAleatorios.push(sorteia()); 
+			numero++;
+    	}
+
+    	return numerosAleatorios; 
+    }
+
+    function trocaPosicao(){
+ 
+    	var primeiraPosicao= todosNumerosObtidos[0]; 
+    	var ultimaPosicao= todosNumerosObtidos[todosNumerosObtidos.length - 1];
+
+
+    	todosNumerosObtidos[0]=ultimaPosicao;
+    	todosNumerosObtidos[todosNumerosObtidos.length - 1]=primeiraPosicao;
+
+    	mostra(todosNumerosObtidos);
+    }
+
+    var todosNumerosObtidos= []; 
+    var numerosEscolhidosNoPrompt= []; 
+    var numerosAleatorios=  sorteiaNumeros(5);
+
+    for (quantosNumerosQueroPuxar= 0; quantosNumerosQueroPuxar<numerosAleatorios.length; quantosNumerosQueroPuxar++){
+
+		todosNumerosObtidos.push(numerosAleatorios[quantosNumerosQueroPuxar]);
+    }
+
+  
+    var numeroPedido= 0;
+    while (numeroPedido<5){
+
+
+    	var numeroRecebido= prompt("Digite um numero");
+
+
+    	if (numeroRecebido==Number(numeroRecebido)){
+
+    		numeroPedido++;
+
+    		numerosEscolhidosNoPrompt.push(numeroRecebido)
+
+    		todosNumerosObtidos.push(numeroRecebido); 
+
+    	}else{
+    		alert("O caractere digitado não é um numero. Digite novamente.")
+    	}
+ 
+    }
+
+    mostra("Imprimindo os numeros aleatórios: " + numerosAleatorios)
+
+    pulaLinha();
+
+    mostra("Imprimindo os numeros escolhidos no prompt: " + numerosEscolhidosNoPrompt);
+
+    pulaLinha();
+    pulaLinhaCurta()
+ 
+    mostra("Imprimindo numeros que estão indo para o array: " + todosNumerosObtidos)
+
+    pulaLinha();
+    pulaLinhaCurta()
+
+    var numerosImpares= [];
+	var numerosPares= []; 
+
+    for(var posicaoNoArray= 0; posicaoNoArray<todosNumerosObtidos.length; posicaoNoArray++){ 
+
+    	if(todosNumerosObtidos[posicaoNoArray] %2 !=0){
+
+    		 numerosImpares.push(todosNumerosObtidos[posicaoNoArray]);
+
+    	}else{
+
+    		 numerosPares.push(todosNumerosObtidos[posicaoNoArray]);
+
+    	}
+    }
+
+  		mostra("Estes são os numeros impares: " + numerosImpares);
+  		pulaLinha()
+      	mostra("Estes são os numeros pares: " + numerosPares);
+
+
+      	var maiorNumero= todosNumerosObtidos[0];
+      	var menorNumero= todosNumerosObtidos[0];
+
+    for(var posicaoNoArray= 0; posicaoNoArray<todosNumerosObtidos.length; posicaoNoArray++){
+
+
+    	if (todosNumerosObtidos[posicaoNoArray] > maiorNumero){
+
+    		maiorNumero= todosNumerosObtidos[posicaoNoArray]; 
+    	}
+
+    	if (todosNumerosObtidos[posicaoNoArray] < menorNumero){
+
+    		menorNumero= todosNumerosObtidos[posicaoNoArray]; 
+    	}
+    }
+
+    pulaLinha()
+
+	mostra("O maior numero é o " + maiorNumero);
+
+	pulaLinha()
+
+	mostra("O menor numero é o " + menorNumero);
+
+
+	pulaLinha()
+	pulaLinha()
+	pulaLinha()
+
+
+	mostra(todosNumerosObtidos); 
+
+    pulaLinha()
+
+    trocaPosicao()
+
+</script>
